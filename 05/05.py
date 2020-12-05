@@ -1,20 +1,12 @@
 #!/usr/bin/python3
 
 import sys
-import re
 
 maxid = 0
 ids = {}
 for line in sys.stdin:
-    rows = line[:7]
-    seat = line[7:]
-
-    rows = rows.replace('F', '0').replace('B', '1')
-    seat = seat.replace('R', '1').replace('L', '0')
-
-    row = int(rows, 2)
-    column = int(seat, 2)
-    seatid = row * 8 + column
+    line = line.replace('F', '0').replace('B', '1').replace('R', '1').replace('L', '0')
+    seatid = int(line, 2)
 
     ids[seatid] = 1
     if maxid < seatid:
